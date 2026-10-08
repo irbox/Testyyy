@@ -1,0 +1,22 @@
+:root {
+  font-family: "Chivo", serif;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+a {
+  color: #99ccff;  /* #88ccff might also work */
+}
+
+a:visited {
+  color: #cc88ff;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.headerlink {
+  margin-inline-start: 0.25em;
+}

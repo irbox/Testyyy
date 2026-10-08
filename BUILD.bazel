@@ -1,0 +1,39 @@
+load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
+
+sphinx_build_binary(
+    name = "sphinx",
+    deps = [
+        "@pypi//sphinx",
+        "@pypi//requests",
+    ]
+)
+
+sphinx_docs_library(
+    name = "sources",
+    srcs = [
+        "_static/green_square.png",
+        "_static/main.css",
+        "_templates/layout.html",
+        "dragon.rst",
+        "index.rst",
+        "pull-ups/index.rst",
+        "recipes/chocolate-chip-cookies.rst",
+        "recipes/index.rst",
+    ],
+)
+
+sphinx_docs(
+    name = "docs",
+    config = "conf.py",
+    formats = [
+        "html",
+    ],
+    sphinx = ":sphinx",
+    deps = [
+        ":sources",
+    ],
+    extra_opts = [
+        "--fail-on-warning",
+    ],
+)
